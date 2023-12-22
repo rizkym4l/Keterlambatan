@@ -11,11 +11,10 @@
   
   <div class=" justify-content-end">
     
-    <a href="/exportexcel" class="btn btn-primary me-5">Expot Excel</a><br><br>
-    <h2><a href="rekap" style="color: rgb(62, 152, 248)">Rekap Data</a></h2>
+
   </div>
   
-  <div class="justify-content-start" style="margin-left: 40%" >
+  <div class="justify-content-start" style="margin-left: 50%" >
     <form action="/cari" method="post">
       {{-- @csrf --}}
     {{-- <input type="date" name="date" class="form-controller"> --}}
@@ -31,9 +30,8 @@
   </div>
 </div>
   
-<br>
-{{-- @if(Auth::user()->role == 'admin') --}}
-<table class="table" style="width: 70%;margin-left:14%">
+  <br>
+    <table class="table" style="width: 70%;margin-left:14%">
         <thead>
         
           <tr>
@@ -41,12 +39,8 @@
          <th></th>
          <th></th>
          <th>Nama</th>
-         <th>Tanggal</th>
-         <th>informasi</th>
-        {{-- @if(Auth::user()->role == 'admin') --}}
-
+      <th>Jumlah</th>
          <th>Aksi</th>
-         {{-- @endif --}}
         </tr>
           
         </thead>
@@ -54,7 +48,7 @@
          
          
       <tr>
-        
+            {{$terlambat}}
         @foreach ($terlambat as $item)
         <td>{{$loop->iteration}}</td>
         <td></td>
@@ -62,7 +56,7 @@
          
         </td>
         <td>
-          {{$item["users"]["name"]}}
+          {{$item['users']->name}}
         
           {{--nested loop--}}
         <ol>
@@ -75,33 +69,35 @@
         </ol>
         </td>
         
+        
         <td>
-          {{$item->date_time_late}}
-        </td>
-        <td>
-          {{$item->information}}
+         {{$item->where("id",$item["id"])->count()}}
+       
          
         </td>
-        <td class="d-flex ms-3">  <a href="editterlambat/{{$item->id}}"><button class="btn btn-success">Edit</button></a>
-          <form action="hapusterlambat/{{$item->id}}/{{$item->date_time_late}}" method="POST">
-              @method('DELETE')
-              @csrf
-<button class="btn btn-danger">Hapus</button>
+        <td class="d-flex ms-3"> 
+        
 </div>
-          </form></td>
-          
-          
-          
-          
-        </tr> 
+        <a href="lihat/{{$item->id}}" style="color: rgb(57, 97, 242)">Lihat</a>
+        @if ($item->where("id",$item["users"]["id"])->count() >= 3)
+        <a href="pdf/{{$item->id}}" class="btn btn-primary ms-5">Kasih sp</a>
+            
+            
+        @endif
+  
+
+    
+    </td>
+
         
-        @endforeach
+           
         
-      </table>
-      <div class="mx-5">
-        {{$terlambat->links()}}
-        
-      </div>
+
+      </tr> 
+
+      @endforeach
+
      
+
 
 </x-app-layout>

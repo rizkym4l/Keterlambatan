@@ -18,12 +18,13 @@
            <div class="col-12">
             <h1>data_master : Edit Data Terlambat</h1><br><br>
             <div class="row" style="margin-left:5%">
-                <form method="POST" action="updaterombel/{{$data->id}}">
+                <form method="POST" action="updaterombel/{{$data->id}}" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="mb-3">
-                      <input type="text" class="form-control" name="rombel" placeholder="{{$data['users']['name']}}" value="{{$data['users']['name']}}">
+                      <input type="text" disabled class="form-control" name="name" placeholder="{{$data['users']['name']}}" value="{{$data['users']['name']}}">
                       {{-- <input type="text" hidden class="form-control" name="id"  placeholder="Rombel"> --}}
+                      
                       {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                     </div>
                   
@@ -34,13 +35,13 @@
                     </div>
                   
                     <div class="mb-3">
-                      <input type="text" class="form-control" name="rombel" placeholder="{{$data['information']}}" value="{{$data['information']}}">
+                      <input type="text" class="form-control" name="information" placeholder="{{$data['information']}}" value="{{$data['information']}}">
                       {{-- <input type="text" hidden class="form-control" name="id"  placeholder="Rombel"> --}}
                       {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                     </div>
                   
                     <div class="mb-3">
-                      <input type="file" class="form-control" name="rombel" placeholder="{{$data['bukti']}}" value="{{$data['bukti']}}"><br>
+                      <input type="file" class="form-control" name="bukti" placeholder="{{$data['bukti']}}" value="{{$data['bukti']}}"><br>
                       {{-- <input type="text" hidden class="form-control" name="id"  placeholder="Rombel"> --}}
                       {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                     </div>

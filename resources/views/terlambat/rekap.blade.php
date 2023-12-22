@@ -48,7 +48,7 @@
          
          
       <tr>
-        
+            
         @foreach ($terlambat as $item)
         <td>{{$loop->iteration}}</td>
         <td></td>
@@ -82,7 +82,6 @@
         @if ($item->where("id",$item["users"]["id"])->count() >= 3)
         <a href="pdf/{{$item->id}}" class="btn btn-primary ms-5">Kasih sp</a>
             
-        @else
             
         @endif
   
@@ -98,11 +97,7 @@
 
       @endforeach
 
-      </table>
-      <div class="mx-5">
-      {{-- {{$terlambat->links()}} --}}
-
-      </div>
+     
 
 
 </x-app-layout>

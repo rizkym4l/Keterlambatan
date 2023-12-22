@@ -7,8 +7,8 @@
         </h2>
     </x-slot><br><br>
     <p class="container my-5">Lihat detail : {{$lates[0]['users']['name']}} <br><br>
-  {{$lates[0]['users']['name']}} | {{$lates[0]['users']['nis']}} | {{$lates[0]['users']['rombel_id']}} | {{$lates[0]['users']['rayon_id']}} 
-  {{$lates}}
+  {{$lates[0]['users']['name']}} | {{$lates[0]['users']['nis']}} | {{$lates[0]['users']['rombel']['rombel']}} | {{$lates[0]['users']['rayon']['rayon']}} w
+  {{-- {{$lates}} --}}
 
     </p><br>
 <div class="container my-5 d-flex">

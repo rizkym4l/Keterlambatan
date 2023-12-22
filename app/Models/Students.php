@@ -20,5 +20,10 @@ class Students extends Model
        {
            return $this->belongsTo(Rayons::class, 'rayon_id', 'id');
        }
+       public function Rombel(): BelongsTo
+       {
+           return $this->belongsTo(Rombels::class, 'rombel_id', 'id');
+       }
+       
      
 }

@@ -11,16 +11,36 @@
                 </div>
 
                 <!-- Navigation Links -->
+
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+               
+@if (Auth::user()->role == 'admin')
+    
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('data')" :active="request()->routeIs('data')">
                         {{ __('Data_Master') }}
                     </x-nav-link>
+
                     <x-nav-link :href="route('terlambat')" :active="request()->routeIs('terlambat')">
                         {{ __('Data_keterlambatan') }}
                     </x-nav-link>
+@else
+
+<x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+    {{ __('Dashboard') }}
+</x-nav-link>
+<x-nav-link :href="route('siswa')" :active="request()->routeIs('siswa')">
+    {{ __('siswa') }}
+</x-nav-link>
+
+<x-nav-link :href="route('terlambatps')" :active="request()->routeIs('terlambatps')">
+    {{ __('Data_keterlambatan') }}
+</x-nav-link>
+
+@endif
+
                 </div>
                 
             </div>

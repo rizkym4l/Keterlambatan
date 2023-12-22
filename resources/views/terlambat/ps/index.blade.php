@@ -11,19 +11,11 @@
   
   <div class=" justify-content-end">
     
-    <a href="/exportexcel" class="btn btn-primary me-5">Expot Excel</a><br><br>
-    <h2><a href="rekap" style="color: rgb(62, 152, 248)">Rekap Data</a></h2>
+    
   </div>
   
   <div class="justify-content-start" style="margin-left: 40%" >
-    <form action="/cari" method="post">
-      {{-- @csrf --}}
-    {{-- <input type="date" name="date" class="form-controller"> --}}
-    <input type="text" name="nama_pembeli" class="form-controller" placeholder="Nama pembeli">
-
-    <input type="submit" class="form-controller btn btn-success" value="Cari" style="color: green">
-    <input type="hidden" name="_token" value="{{csrf_token()}}">
- <a href="dataterlambat"class="btn btn-warning">RESET</a>
+  
   </form>
   
    
@@ -40,29 +32,27 @@
             <th>NO</th>
          <th></th>
          <th></th>
+         <th>Nis</th>
          <th>Nama</th>
-         <th>Tanggal</th>
-         <th>informasi</th>
+         <th>Rombel</th>
+         <th>Rayon</th>
         {{-- @if(Auth::user()->role == 'admin') --}}
 
-         <th>Aksi</th>
-         {{-- @endif --}}
-        </tr>
           
         </thead>
      
-         
+         {{$siswa}}
          
       <tr>
         
-        @foreach ($terlambat as $item)
+        @foreach ($siswa as $item)
         <td>{{$loop->iteration}}</td>
         <td></td>
         <td>
          
         </td>
         <td>
-          {{$item["users"]["name"]}}
+          {{$item["nis"]}}
         
           {{--nested loop--}}
         <ol>
@@ -76,20 +66,17 @@
         </td>
         
         <td>
-          {{$item->date_time_late}}
+          {{$item->name}}
         </td>
         <td>
-          {{$item->information}}
+          {{$item->rayon->rayon}}
          
         </td>
-        <td class="d-flex ms-3">  <a href="editterlambat/{{$item->id}}"><button class="btn btn-success">Edit</button></a>
-          <form action="hapusterlambat/{{$item->id}}/{{$item->date_time_late}}" method="POST">
-              @method('DELETE')
-              @csrf
-<button class="btn btn-danger">Hapus</button>
-</div>
-          </form></td>
-          
+        <td>
+            {{$item->rombel->rombel}}
+
+        </td>
+       
           
           
           
@@ -99,7 +86,7 @@
         
       </table>
       <div class="mx-5">
-        {{$terlambat->links()}}
+        {{-- {{$terlambat->links()}} --}}
         
       </div>
      
